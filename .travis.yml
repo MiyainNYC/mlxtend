@@ -33,7 +33,7 @@ install:
         conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy=$NUMPY_VERSION scipy=$SCIPY_VERSION matplotlib=$MATPLOTLIB_VERSION pandas=$PANDAS_VERSION scikit-learn=$SKLEARN_VERSION;
     fi
   - source activate test-environment
-  - if [[ "${COVERAGE}" == "true" ]]; then pip install coverage coveralls
+  - if [[ "${COVERAGE}" == "true" ]]; then pip install coverage coveralls; fi
   - if [[ "${TENSORFLOW}" == "true" ]]; then
         python -c "import tensorflow; print('tensorflow %s' % tensorflow.__version__)";
     else
@@ -42,7 +42,7 @@ install:
         python -c "import matplotlib; print('matplotlib %s' % matplotlib.__version__)";
     fi
 script:
-    - pass
+    - echo "test"
 after_success:
     - if [[ "${COVERAGE}" == "true" ]]; then coveralls || echo "failed"; fi
 notifications:
