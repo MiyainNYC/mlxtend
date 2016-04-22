@@ -1,10 +1,4 @@
-#!/bin/bash
-# This script is meant to be called by the "script" step defined in
-# .travis.yml. See http://docs.travis-ci.com/ for more details.
-# The behavior of the script is controlled by environment variabled defined
-# in the .travis.yml in the top level folder of the project.
-
-# License: 3-clause BSD
+#!/usr/bin/env bash
 
 set -e
 
@@ -13,7 +7,7 @@ python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
 
 
-if [[ "$TENSORFLOW" == "true" ]]; then
+if [ "$TENSORFLOW" == "true" ]; then
     python -c "import tensorflow; print('tensorflow %s' % tensorflow.__version__)"
     nosetests -s -v mlxtend.tf_classifier --nologcapture
 else
