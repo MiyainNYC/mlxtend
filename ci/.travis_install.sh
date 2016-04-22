@@ -29,9 +29,9 @@ fi
 
 if [ "${TENSORFLOW}" = "true" ]; then
     if [ "${TRAVIS_PYTHON_VERSION}" = "2.7" ]; then
-        pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl;
+        pip install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl;
     else
-        pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp34-none-linux_x86_64.whl;
+        pip install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp34-none-linux_x86_64.whl;
     fi
     python -c "import tensorflow; print('tensorflow %s' % tensorflow.__version__)";
 else
@@ -39,3 +39,5 @@ else
     python -c "import pandas; print('pandas %s' % pandas.__version__)";
     python -c "import matplotlib; print('matplotlib %s' % matplotlib.__version__)";
 fi
+
+python setup.py install;
